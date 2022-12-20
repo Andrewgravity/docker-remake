@@ -1,6 +1,8 @@
 services:
   db-server:
-    build: ./mysql/ # use mysql folder
+    build:
+      context: ./../mysql-scripts/ # use mysql folder
+      dockerfile: ./../docker/db-server/Dockerfile
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
@@ -10,9 +12,9 @@ services:
 
   app:
     build: 
-      context: ./ # use the first folder aka the parent directory
-      dockerfile: ./python/Dockerfile # specifying the python Dockerfile dir
-    command: sh -c 'sleep 5s ; python3 ./insert_values.py; python3 ./main.py'
+      context: ./../src/ # use this foulder as main
+      dockerfile: ./../docker/app/Dockerfile # specifying the python Dockerfile dir
+    command: sh -c 'sleep 5s ; python3 ./main.py'
     depends_on:
     - db-server
 

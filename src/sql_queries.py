@@ -10,7 +10,7 @@ class Queries:
     def __init__(self) -> None:
         pass
 
-    def query_1() -> object:
+    def query_1(self) -> object:
         # establish connection to SQL server
         # connection = Connection()
         # cursor = connection.cursor()
@@ -33,9 +33,9 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
-        return json.dumps(json_data)
+        return json_data
 
-    def query_2() -> object:
+    def query_2(self) -> object:
         # establish connection to SQL server
         # connection = Connection()
         # cursor = connection.cursor()
@@ -60,9 +60,9 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
-        return json.dumps(json_data)
+        return json_data
 
-    def query_3() -> object:
+    def query_3(self) -> object:
         # establish connection to SQL server
         # connection = Connection()
         # cursor = connection.cursor()
@@ -87,9 +87,9 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
-        return json.dumps(json_data)
+        return json_data
 
-    def query_4() -> object:
+    def query_4(self) -> object:
         # establish connection to SQL server
         # connection = Connection()
         # cursor = connection.cursor()
@@ -113,4 +113,4 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
-        return json.dumps(json_data)
+        return json_data
