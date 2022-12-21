@@ -1,22 +1,16 @@
 import logging
 import json
-from connect_to_sql import Connector
+from connector import Connector
+from combiner import Combiner
+from json2xml import json2xml
 
-# logging.basicConfig(level=logging.DEBUG)
-# logging.info('Starting queries.py')
+class Repository:
 
-class Queries:
+    def __init__(self, output_format) -> None:
+        self._output_format = output_format
 
-    def __init__(self) -> None:
-        pass
+    def rooms_and_num_of_students(self) -> object:
 
-    def query_1(self) -> object:
-        # establish connection to SQL server
-        # connection = Connection()
-        # cursor = connection.cursor()
-        # connection = mysql.connector.connect(user='root', password='root', host='db-server', port = "3306", database = 'db')
-        # print('Database connected, executing query 1')
-        # cursor = connection.cursor()
         connection = Connector().connect()
         logging.debug('Made a connection to mysql server')
         cursor = connection.cursor()
@@ -33,15 +27,17 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
+
+        # return XML
+        if self._output_format == 'xml':
+            logging.info('Output format is xml:')
+            return json2xml(json_data)
+
+        logging.info('Output format is json:')
         return json_data
 
-    def query_2(self) -> object:
-        # establish connection to SQL server
-        # connection = Connection()
-        # cursor = connection.cursor()
-        # connection = mysql.connector.connect(user='root', password='root', host='db-server', port = "3306", database = 'db')
-        # print('Database connected, executing query 2')
-        # cursor = connection.cursor()
+    def lowest_avg_age(self) -> object:
+
         connection = Connector().connect()
         logging.debug('Made a connection to mysql server')
         cursor = connection.cursor()
@@ -53,22 +49,24 @@ class Queries:
             GROUP BY Room.Id
             ORDER BY age ASC
             LIMIT 5;
-        ''') 
+        ''')
 
         row_headers=[x[0] for x in cursor.description] #this will extract row headers
         rv = cursor.fetchall()
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
+
+        # return XML
+        if self._output_format == 'xml':
+            logging.info('Output format is xml:')
+            return json2xml(json_data)
+
+        logging.info('Output format is json:')
         return json_data
 
-    def query_3(self) -> object:
-        # establish connection to SQL server
-        # connection = Connection()
-        # cursor = connection.cursor()
-        # connection = mysql.connector.connect(user='root', password='root', host='db-server', port = "3306", database = 'db')
-        # print('Database connected, executing query 3')
-        # cursor = connectio
+    def biggest_age_diff(self) -> object:
+
         connection = Connector().connect()
         logging.debug('Made a connection to mysql server')
         cursor = connection.cursor()
@@ -87,15 +85,17 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
+
+        # return XML
+        if self._output_format == 'xml':
+            logging.info('Output format is xml:')
+            return json2xml(json_data)
+        
+        logging.info('Output format is json:')
         return json_data
 
-    def query_4(self) -> object:
-        # establish connection to SQL server
-        # connection = Connection()
-        # cursor = connection.cursor()
-        # connection = mysql.connector.connect(user='root', password='root', host='db-server', port = "3306", database = 'db')
-        # print('Database connected, executing query 4')
-        # cursor = connection.cursor()
+    def rooms_with_diff_genders(self) -> object:
+
         connection = Connector().connect()
         logging.debug('Made a connection to mysql server')
         cursor = connection.cursor()
@@ -105,7 +105,7 @@ class Queries:
             SELECT COUNT(1) as num_of_students_in_a_room, Room.Id, Room.Name
             FROM Student INNER JOIN Room ON Student.RoomId = Room.Id
             GROUP BY Room.Id, Room.Name
-            HAVING COUNT(DISTINCT(Student.Sex)) > 1
+            HAVING COUNT(DISTINCT(Student.Sex)) > 1;
         ''')    
 
         row_headers=[x[0] for x in cursor.description] #this will extract row headers
@@ -113,4 +113,11 @@ class Queries:
         json_data=[]
         for result in rv:
                 json_data.append(dict(zip(row_headers,result)))
+
+        # return XML
+        if self._output_format == 'xml':
+            logging.info('Output format is xml:')
+            return json2xml(json_data)
+
+        logging.info('Output format is json:')
         return json_data

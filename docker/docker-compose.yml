@@ -14,10 +14,6 @@ services:
     build: 
       context: ./../src/ # use this foulder as main
       dockerfile: ./../docker/app/Dockerfile # specifying the python Dockerfile dir
-    command: sh -c 'sleep 5s ; python3 ./main.py'
+    command: sh -c 'sleep 5s ; python3 ./main.py' # you can specify the --rooms-path --students-path --output-format here after the ./main.py
     depends_on:
     - db-server
-
-
-    # volumes: # run the sql script (optinal cause I already have a run script in Dockerfile)
-    #   - ./mysql:/docker-entrypoint-initdb.d

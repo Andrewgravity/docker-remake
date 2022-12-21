@@ -13,3 +13,8 @@ class Connector:
         connection = self.connection()
         cursor = connection.cursor()
         return cursor
+        
+    # def description(self) -> object:
+    #     cursor = self.cursor()
+    #     description = cursor.description()
+    #     return description
