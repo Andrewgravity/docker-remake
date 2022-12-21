@@ -27,7 +27,7 @@ logging.info('Starting main.py')
 @click.option(
     "-f",
     "--output-format",
-    default = "xml",
+    default = "json",
     help="Output file format",
     type=click.Choice(["json", "xml"]),
 )
