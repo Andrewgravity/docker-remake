@@ -1,4 +1,9 @@
-def json2xml(json_obj, line_padding=""):
+def json2xml(json_obj: str, line_padding="") -> str:
+    """
+    Method which converts json into xml.
+    :return: str
+    :param json_obj: json input file
+    """
     result_list = list()
 
     json_obj_type = type(json_obj)
