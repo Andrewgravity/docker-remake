@@ -19,7 +19,7 @@ class Uploader:
         """
 
         logging.basicConfig(level=logging.DEBUG)
-        logging.info("Starting insert_values.py")
+        logging.info("Starting uploader.py")
 
         # read students data from json
         with open(self._students_path, "r") as read_file:  #'./data/students.json'

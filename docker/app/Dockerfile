@@ -1,18 +1,15 @@
 FROM python:3.9
 
-# RUN pip install mysql-connector-python
-# RUN pip install click
-
 WORKDIR /usr/app/src
 
-COPY ["./", "./"]
-#RUN pip install -r requirements.txt
+COPY ["./src/", "./"]
+COPY ["./data/*.json", "./data/"]
 
 #copy and install requirements.txt
 COPY ./requirements.txt /tmp/
 RUN pip install --requirement /tmp/requirements.txt
-COPY . /tmp/
+#COPY . /tmp/
 
-#copy and run pre-commit
-# COPY ./pre-commit-config.yaml .
-# RUN git init . && pre-commit install-hooks
+#copy unit tests and run them
+COPY ["./tests/", "./"]
+#RUN python -m unittest test_connector.py

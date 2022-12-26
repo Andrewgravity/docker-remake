@@ -12,14 +12,14 @@ logging.info("Starting main.py")
 @click.option(
     "-r",
     "--rooms-path",
-    default="./src/data/rooms.json",
+    default="./data/rooms.json",
     help="Path to file with data about rooms",
     type=click.STRING,
 )
 @click.option(
     "-s",
     "--students-path",
-    default="./src/data/students.json",
+    default="./data/students.json",
     help="Path to file with data about students",
     type=click.STRING,
 )
