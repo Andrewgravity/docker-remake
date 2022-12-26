@@ -6,7 +6,7 @@ This app consists of: <br/>
     - upload data to the db <br/>
     - execute sql queries and return data in json or xml <br/>
 • pre-commit <br/>
-• unit tests
+• unit tests <br/>
 
 Everything is executed by running the **docker-compose.yaml** file in docker directory,
 which upon execution creates images of mysql and python using the corresponding Dockerfiles.
