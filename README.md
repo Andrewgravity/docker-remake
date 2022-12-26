@@ -1,11 +1,11 @@
 <h1>Overview:</h1>
 This app consists of: <br/>
-• embedded mySQL database
-• python scripts which:
-    - connect to the local db
-    - upload data to the db
-    - execute sql queries and return data in json or xml
-• pre-commit
+• embedded mySQL database <br/>
+• python scripts which: <br/>
+    - connect to the local db <br/>
+    - upload data to the db <br/>
+    - execute sql queries and return data in json or xml <br/>
+• pre-commit <br/>
 • unit tests
 
 Everything is executed by running the **docker-compose.yaml** file in docker directory,
