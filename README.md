@@ -1,10 +1,10 @@
 <h1>Overview:</h1>
-This app consists of:
+This app consists of: <br/>
 • embedded mySQL database
 • python scripts which:
-&emsp- connect to the local db
-&emsp- upload data to the db
-&emsp- execute sql queries and return data in json or xml
+    - connect to the local db
+    - upload data to the db
+    - execute sql queries and return data in json or xml
 • pre-commit
 • unit tests
 
