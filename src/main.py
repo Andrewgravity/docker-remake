@@ -47,10 +47,10 @@ def main(rooms_path: str, students_path: str, output_format: str) -> None:
     lowest_avg_age = Repository(output_format).lowest_avg_age()
     biggest_age_diff = Repository(output_format).biggest_age_diff()
     rooms_with_diff_genders = Repository(output_format).rooms_with_diff_genders()
-    print(rooms_and_num_of_students)
-    print(lowest_avg_age)
-    print(biggest_age_diff)
-    print(rooms_with_diff_genders)
+    logging.info(rooms_and_num_of_students)
+    logging.info(lowest_avg_age)
+    logging.info(biggest_age_diff)
+    logging.info(rooms_with_diff_genders)
 
     logging.info("main.py executed")
 

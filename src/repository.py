@@ -12,6 +12,18 @@ class Repository:
     def __init__(self, output_format: str) -> None:
         self._output_format = output_format
 
+    def output(self, json_file: str) -> str:
+        """
+        Method which outupts data
+        """
+
+        if self._output_format == "json":
+            logging.info("Output format is json:")
+            return json_file
+
+        logging.info("Output format is xml:")
+        return json2xml(json_file)
+
     def fetchAndMapJson(self, cursor: object) -> str:
         """
         Method which makes a json out of column names and row values
@@ -46,12 +58,7 @@ class Repository:
         )
 
         json_file = self.fetchAndMapJson(cursor)
-        if self._output_format == "xml":
-            logging.info("Output format is xml:")
-            return json2xml(json_file)
-
-        logging.info("Output format is json:")
-        return json_file
+        return self.output(json_file)
 
     def lowest_avg_age(self) -> str:
         """
@@ -75,12 +82,7 @@ class Repository:
         )
 
         json_file = self.fetchAndMapJson(cursor)
-        if self._output_format == "xml":
-            logging.info("Output format is xml:")
-            return json2xml(json_file)
-
-        logging.info("Output format is json:")
-        return json_file
+        return self.output(json_file)
 
     def biggest_age_diff(self) -> str:
         """
@@ -104,12 +106,7 @@ class Repository:
         )
 
         json_file = self.fetchAndMapJson(cursor)
-        if self._output_format == "xml":
-            logging.info("Output format is xml:")
-            return json2xml(json_file)
-
-        logging.info("Output format is json:")
-        return json_file
+        return self.output(json_file)
 
     def rooms_with_diff_genders(self) -> str:
         """
@@ -132,9 +129,4 @@ class Repository:
         )
 
         json_file = self.fetchAndMapJson(cursor)
-        if self._output_format == "xml":
-            logging.info("Output format is xml:")
-            return json2xml(json_file)
-
-        logging.info("Output format is json:")
-        return json_file
+        return self.output(json_file)

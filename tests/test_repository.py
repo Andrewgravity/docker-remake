@@ -25,7 +25,7 @@ def test_fetchAndMapJson(test_cursor, test_repository):
     try:
         test_repository.fetchAndMapJson(test_cursor)
     except mysql.connector.Error as err:
-        print("couldn't connect to server: {}".format(err))
+        print(f"couldn't connect to server: {err}")
 
 
 def test_rooms_and_num_of_students(test_repository):
